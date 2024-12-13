@@ -16,6 +16,26 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@swapi/http-server": [
+        "libs/http-server/src"
+      ],
+      "@swapi/http-server/*": [
+        "libs/http-server/src/*"
+      ],
+      "@swapi/swagger": [
+        "libs/swagger/src"
+      ],
+      "@swapi/swagger/*": [
+        "libs/swagger/src/*"
+      ],
+      "@swapi/cors": [
+        "libs/cors/src"
+      ],
+      "@swapi/cors/*": [
+        "libs/cors/src/*"
+      ]
+    }
   }
 }

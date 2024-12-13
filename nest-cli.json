@@ -3,6 +3,45 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true
+  },
+  "projects": {
+    "http-server": {
+      "type": "library",
+      "root": "libs/http-server",
+      "entryFile": "index",
+      "sourceRoot": "libs/http-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/http-server/tsconfig.lib.json"
+      }
+    },
+    "swagger": {
+      "type": "library",
+      "root": "libs/swagger",
+      "entryFile": "index",
+      "sourceRoot": "libs/swagger/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/swagger/tsconfig.lib.json"
+      }
+    },
+    "cors": {
+      "type": "library",
+      "root": "libs/cors",
+      "entryFile": "index",
+      "sourceRoot": "libs/cors/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/cors/tsconfig.lib.json"
+      }
+    },
+    "logger": {
+      "type": "library",
+      "root": "libs/logger",
+      "entryFile": "index",
+      "sourceRoot": "libs/logger/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/logger/tsconfig.lib.json"
+      }
+    }
   }
 }
