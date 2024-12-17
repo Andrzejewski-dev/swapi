@@ -34,13 +34,22 @@
         "tsConfigPath": "libs/cors/tsconfig.lib.json"
       }
     },
-    "logger": {
+    "common": {
       "type": "library",
-      "root": "libs/logger",
+      "root": "libs/common",
       "entryFile": "index",
-      "sourceRoot": "libs/logger/src",
+      "sourceRoot": "libs/common/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/logger/tsconfig.lib.json"
+        "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
+    },
+    "database": {
+      "type": "library",
+      "root": "libs/database",
+      "entryFile": "index",
+      "sourceRoot": "libs/database/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/database/tsconfig.lib.json"
       }
     }
   }

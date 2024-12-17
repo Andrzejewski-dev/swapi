@@ -35,6 +35,18 @@
       ],
       "@swapi/cors/*": [
         "libs/cors/src/*"
+      ],
+      "@swapi/common": [
+        "libs/common/src"
+      ],
+      "@swapi/common/*": [
+        "libs/common/src/*"
+      ],
+      "@swapi/database": [
+        "libs/database/src"
+      ],
+      "@swapi/database/*": [
+        "libs/database/src/*"
       ]
     }
   }

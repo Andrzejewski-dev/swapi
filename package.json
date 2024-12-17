@@ -17,7 +17,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d ./src/datasource.ts",
+    "typeorm:migration:generate": "npm run typeorm -- migration:generate",
+    "typeorm:migration:run": "npm run typeorm -- migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -26,12 +29,15 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/swagger": "^8.1.0",
+    "@nestjs/typeorm": "^10.0.2",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "js-yaml": "^4.1.0",
     "nest-winston": "^1.9.7",
+    "pg": "^8.13.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20",
     "winston": "^3.17.0"
   },
   "devDependencies": {
@@ -85,7 +91,9 @@
     "moduleNameMapper": {
       "^@swapi/http-server(|/.*)$": "<rootDir>/libs/http-server/src/$1",
       "^@swapi/swagger(|/.*)$": "<rootDir>/libs/swagger/src/$1",
-      "^@swapi/cors(|/.*)$": "<rootDir>/libs/cors/src/$1"
+      "^@swapi/cors(|/.*)$": "<rootDir>/libs/cors/src/$1",
+      "^@swapi/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+      "^@swapi/database(|/.*)$": "<rootDir>/libs/database/src/$1"
     }
   }
 }

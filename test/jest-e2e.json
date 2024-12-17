@@ -18,6 +18,10 @@
     "@swapi/cors/(.*)": "<rootDir>/../libs/cors/src/$1",
     "@swapi/cors": "<rootDir>/../libs/cors/src",
     "@swapi/logger/(.*)": "<rootDir>/../libs/logger/src/$1",
-    "@swapi/logger": "<rootDir>/../libs/logger/src"
+    "@swapi/logger": "<rootDir>/../libs/logger/src",
+    "@swapi/common/(.*)": "<rootDir>/../libs/common/src/$1",
+    "@swapi/common": "<rootDir>/../libs/common/src",
+    "@swapi/database/(.*)": "<rootDir>/../libs/database/src/$1",
+    "@swapi/database": "<rootDir>/../libs/database/src"
   }
 }

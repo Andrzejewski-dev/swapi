@@ -1,6 +1,7 @@
 ---
 app:
   name: 'Star Wars API'
+  baseUrl: 'http://localhost'
 
 httpServer:
   enabled: <%= process.env.HTTP_SERVER_ENABLED %>
@@ -20,3 +21,10 @@ cors:
 log:
   enabled: true
   level: info
+
+database:
+  host: <%= process.env.DATABASE_HOST %>
+  port: <%= process.env.DATABASE_PORT %>
+  username: <%= process.env.DATABASE_USERNAME %>
+  password: <%= process.env.DATABASE_PASSWORD %>
+  database: <%= process.env.DATABASE_DATABASE %>

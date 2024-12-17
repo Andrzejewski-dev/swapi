@@ -1,10 +1,12 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { CorsModule } from '@swapi/cors';
+import { DatabaseModule } from '@swapi/database';
 import { HttpServerModule } from '@swapi/http-server';
 import { SwaggerModule } from '@swapi/swagger';
 
 import { config } from './config';
+import { datasource } from './datasource';
 
 @Module({})
 export class AppModule {
@@ -31,6 +33,10 @@ export class AppModule {
         CorsModule.register({
           enabled: options.cors.enabled,
           options: options.cors.options,
+        }),
+        DatabaseModule.register({
+          datasource,
+          baseUrl: options.app.baseUrl,
         }),
       ],
       controllers: [],
