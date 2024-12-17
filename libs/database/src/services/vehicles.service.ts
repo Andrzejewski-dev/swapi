@@ -34,12 +34,12 @@ export class VehiclesService extends ResourcesService<Vehicle, VehicleDto> {
     dto.consumables = entity.consumables;
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
-    dto.url = `${this.options.baseUrl}/api/vehicles/${entity.id}`;
+    dto.url = `${this.options.appBaseUrl}/api/vehicles/${entity.id}`;
     dto.films = entity.films.map(
-      (film) => `${this.options.baseUrl}/api/films/${film.id}`,
+      (film) => `${this.options.appBaseUrl}/api/films/${film.id}`,
     );
     dto.pilots = entity.pilots.map(
-      (pilot) => `${this.options.baseUrl}/api/people/${pilot.id}`,
+      (pilot) => `${this.options.appBaseUrl}/api/people/${pilot.id}`,
     );
 
     return dto;

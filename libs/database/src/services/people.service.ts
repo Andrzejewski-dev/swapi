@@ -29,10 +29,10 @@ export class PeopleService extends ResourcesService<Person, PersonDto> {
     dto.eye_color = entity.eye_color;
     dto.birth_year = entity.birth_year;
     dto.gender = entity.gender;
-    dto.homeworld = `${this.options.baseUrl}/api/planets/${entity.homeworld.id}`;
+    dto.homeworld = `${this.options.appBaseUrl}/api/planets/${entity.homeworld.id}`;
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
-    dto.url = `${this.options.baseUrl}/api/people/${entity.id}`;
+    dto.url = `${this.options.appBaseUrl}/api/people/${entity.id}`;
 
     return dto;
   }

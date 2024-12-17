@@ -51,6 +51,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/database/tsconfig.lib.json"
       }
+    },
+    "swapi": {
+      "type": "library",
+      "root": "libs/swapi",
+      "entryFile": "index",
+      "sourceRoot": "libs/swapi/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/swapi/tsconfig.lib.json"
+      }
     }
   }
 }

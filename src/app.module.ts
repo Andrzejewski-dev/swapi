@@ -4,6 +4,7 @@ import { CorsModule } from '@swapi/cors';
 import { DatabaseModule } from '@swapi/database';
 import { HttpServerModule } from '@swapi/http-server';
 import { SwaggerModule } from '@swapi/swagger';
+import { SwapiModule } from '@swapi/swapi';
 
 import { config } from './config';
 import { datasource } from './datasource';
@@ -36,7 +37,11 @@ export class AppModule {
         }),
         DatabaseModule.register({
           datasource,
-          baseUrl: options.app.baseUrl,
+          appBaseUrl: options.app.baseUrl,
+        }),
+        SwapiModule.register({
+          baseUrl: options.swapi.baseUrl,
+          appBaseUrl: options.app.baseUrl,
         }),
       ],
       controllers: [],

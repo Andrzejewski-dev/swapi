@@ -36,9 +36,9 @@ export class StarshipsService extends ResourcesService<Starship, StarshipDto> {
     dto.consumables = entity.consumables;
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
-    dto.url = `${this.options.baseUrl}/api/starships/${entity.id}`;
+    dto.url = `${this.options.appBaseUrl}/api/starships/${entity.id}`;
     dto.pilots = entity.people.map(
-      (pilot) => `${this.options.baseUrl}/api/pilots/${pilot.id}`,
+      (pilot) => `${this.options.appBaseUrl}/api/pilots/${pilot.id}`,
     );
 
     return dto;

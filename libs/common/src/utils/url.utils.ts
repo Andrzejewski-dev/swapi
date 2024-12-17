@@ -22,3 +22,24 @@ export function extractIdFromUrl(url: string, resource: string): number {
 export function extractIdsFromUrls(urls: string[], resource: string): number[] {
   return urls.map((url) => extractIdFromUrl(url, resource));
 }
+
+/**
+ * A function that replaces the host and protocol of a URL based on a given baseUrl
+ * @param baseUrl - The base URL containing the new host and protocol
+ * @param url - The URL to be modified
+ * @returns The updated URL
+ */
+export function replaceUrlBase(baseUrl: string, url: string): string {
+  try {
+    const baseParsed = new URL(baseUrl);
+    const urlParsed = new URL(url);
+
+    // Replace host and protocol with values from baseUrl
+    urlParsed.host = baseParsed.host;
+    urlParsed.protocol = baseParsed.protocol;
+
+    return urlParsed.toString();
+  } catch (error) {
+    throw new Error(`Invalid URL: ${error.message}`);
+  }
+}

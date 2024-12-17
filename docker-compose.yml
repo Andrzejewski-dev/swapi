@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  swapi:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    restart: always
-    ports:
-      - 80:80
-    env_file: .env
+  # swapi:
+  #   build:
+  #     context: ./
+  #     dockerfile: ./Dockerfile
+  #   restart: always
+  #   ports:
+  #     - 80:80
+  #   env_file: .env
 
   db:
     image: postgres

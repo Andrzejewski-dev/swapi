@@ -47,6 +47,12 @@
       ],
       "@swapi/database/*": [
         "libs/database/src/*"
+      ],
+      "@swapi/swapi": [
+        "libs/swapi/src"
+      ],
+      "@swapi/swapi/*": [
+        "libs/swapi/src/*"
       ]
     }
   }

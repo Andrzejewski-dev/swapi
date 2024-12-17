@@ -48,7 +48,14 @@ export class DatabaseModule {
         StarshipsService,
         VehiclesService,
       ],
-      exports: [],
+      exports: [
+        FilmsService,
+        PeopleService,
+        PlanetsService,
+        SpeciesService,
+        StarshipsService,
+        VehiclesService,
+      ],
     };
   }
 }

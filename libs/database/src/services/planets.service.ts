@@ -32,7 +32,7 @@ export class PlanetsService extends ResourcesService<Planet, PlanetDto> {
     dto.surface_water = entity.surface_water;
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
-    dto.url = `${this.options.baseUrl}/api/planets/${entity.id}`;
+    dto.url = `${this.options.appBaseUrl}/api/planets/${entity.id}`;
 
     return dto;
   }

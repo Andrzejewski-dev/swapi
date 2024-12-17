@@ -31,11 +31,11 @@ export class SpeciesService extends ResourcesService<Species, SpeciesDto> {
     dto.eye_colors = entity.eye_colors;
     dto.language = entity.language;
     dto.homeworld = entity.homeworld
-      ? `${this.options.baseUrl}/api/planets/${entity.homeworld.id}`
+      ? `${this.options.appBaseUrl}/api/planets/${entity.homeworld.id}`
       : null;
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
-    dto.url = `${this.options.baseUrl}/api/species/${entity.id}`;
+    dto.url = `${this.options.appBaseUrl}/api/species/${entity.id}`;
 
     dto.people = entity.people.map((person) => `${person.id}`);
     return dto;

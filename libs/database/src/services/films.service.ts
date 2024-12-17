@@ -28,23 +28,23 @@ export class FilmsService extends ResourcesService<Film, FilmDto> {
     dto.producer = entity.producer;
     dto.release_date = entity.release_date;
     dto.characters = entity.characters.map(
-      (character) => `${this.options.baseUrl}/api/people/${character.id}`,
+      (character) => `${this.options.appBaseUrl}/api/people/${character.id}`,
     );
     dto.planets = entity.planets.map(
-      (planet) => `${this.options.baseUrl}/api/planets/${planet.id}`,
+      (planet) => `${this.options.appBaseUrl}/api/planets/${planet.id}`,
     );
     dto.starships = entity.starships.map(
-      (starship) => `${this.options.baseUrl}/api/starships/${starship.id}`,
+      (starship) => `${this.options.appBaseUrl}/api/starships/${starship.id}`,
     );
     dto.vehicles = entity.vehicles.map(
-      (vehicle) => `${this.options.baseUrl}/api/vehicles/${vehicle.id}`,
+      (vehicle) => `${this.options.appBaseUrl}/api/vehicles/${vehicle.id}`,
     );
     dto.species = entity.species.map(
-      (species) => `${this.options.baseUrl}/api/species/${species.id}`,
+      (species) => `${this.options.appBaseUrl}/api/species/${species.id}`,
     );
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
-    dto.url = `${this.options.baseUrl}/api/films/${entity.id}`;
+    dto.url = `${this.options.appBaseUrl}/api/films/${entity.id}`;
 
     return dto;
   }
