@@ -53,6 +53,12 @@
       ],
       "@swapi/swapi/*": [
         "libs/swapi/src/*"
+      ],
+      "@swapi/importer": [
+        "libs/importer/src"
+      ],
+      "@swapi/importer/*": [
+        "libs/importer/src/*"
       ]
     }
   }

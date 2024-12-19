@@ -1,10 +1,12 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
+import { BullModule } from '@nestjs/bullmq';
 import { CorsModule } from '@swapi/cors';
 import { DatabaseModule } from '@swapi/database';
 import { HttpServerModule } from '@swapi/http-server';
 import { SwaggerModule } from '@swapi/swagger';
 import { SwapiModule } from '@swapi/swapi';
+import { ImporterModule } from '@swapi/importer';
 
 import { config } from './config';
 import { datasource } from './datasource';
@@ -35,13 +37,20 @@ export class AppModule {
           enabled: options.cors.enabled,
           options: options.cors.options,
         }),
-        DatabaseModule.register({
+        DatabaseModule.forRoot({
           datasource,
           appBaseUrl: options.app.baseUrl,
         }),
-        SwapiModule.register({
+        SwapiModule.forRoot({
           baseUrl: options.swapi.baseUrl,
           appBaseUrl: options.app.baseUrl,
+        }),
+        BullModule.forRoot({
+          connection: options.bullmq.connection,
+        }),
+        ImporterModule.forRoot({
+          enabled: options.importer.enabled,
+          cron: options.importer.cron,
         }),
       ],
       controllers: [],

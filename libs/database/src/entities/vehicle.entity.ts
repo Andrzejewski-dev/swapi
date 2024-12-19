@@ -1,6 +1,6 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
@@ -15,7 +15,7 @@ import { Person } from './person.entity';
 @Index('IDX_vehicle_name', ['name'])
 @Index('IDX_vehicle_model', ['model'])
 export class Vehicle {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255 })

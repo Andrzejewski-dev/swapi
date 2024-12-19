@@ -1,12 +1,11 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
   Column,
   Index,
-  JoinTable,
   ManyToOne,
 } from 'typeorm';
 import { Film } from './film.entity';
@@ -18,7 +17,7 @@ import { Planet } from './planet.entity';
 @Entity('people')
 @Index('IDX_people_name', ['name'])
 export class Person {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255 })

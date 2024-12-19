@@ -45,7 +45,7 @@ export abstract class ResourcesService<T extends ResourceDto> {
         throw error;
       });
 
-    return this.convertResourceToDto(response.data);
+    return this.convertResourceToDto(response.data.result.properties);
   }
 
   abstract convertResourceToDto(resource: any): T;

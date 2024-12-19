@@ -1,4 +1,4 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { DynamicModule, Global, Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
 
 import { SwapiOptionsInterface } from './swapi-options.interface';
@@ -12,32 +12,37 @@ import {
   VehiclesService,
 } from './services';
 
-@Module({})
+@Global()
+@Module({
+  imports: [HttpModule],
+  providers: [
+    FilmsService,
+    PeopleService,
+    PlanetsService,
+    SpeciesService,
+    StarshipsService,
+    VehiclesService,
+  ],
+  exports: [
+    FilmsService,
+    PeopleService,
+    PlanetsService,
+    SpeciesService,
+    StarshipsService,
+    VehiclesService,
+  ],
+})
 export class SwapiModule {
-  static register(options: SwapiOptionsInterface): DynamicModule {
+  static forRoot(options: SwapiOptionsInterface): DynamicModule {
     return {
       module: SwapiModule,
-      imports: [HttpModule],
       providers: [
         {
           provide: SWAPI_OPTIONS_PROVIDER,
           useValue: options,
         },
-        FilmsService,
-        PeopleService,
-        PlanetsService,
-        SpeciesService,
-        StarshipsService,
-        VehiclesService,
       ],
-      exports: [
-        FilmsService,
-        PeopleService,
-        PlanetsService,
-        SpeciesService,
-        StarshipsService,
-        VehiclesService,
-      ],
+      exports: [SWAPI_OPTIONS_PROVIDER],
     };
   }
 }

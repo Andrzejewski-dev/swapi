@@ -1,6 +1,6 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
@@ -16,7 +16,7 @@ import { Planet } from './planet.entity';
 @Entity('species')
 @Index('IDX_spacies_name', ['name'])
 export class Species {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255 })
@@ -49,7 +49,7 @@ export class Species {
   @ManyToOne(() => Planet, (planet) => planet.residents)
   homeworld: Planet;
 
-  @ManyToMany(() => Person, (person) => person.species, { cascade: true })
+  @ManyToMany(() => Person, (person) => person.species)
   @JoinTable({
     name: 'species_people',
     joinColumn: { name: 'species_id', referencedColumnName: 'id' },

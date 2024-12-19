@@ -62,13 +62,13 @@ export class VehiclesService extends ResourcesService<Vehicle, VehicleDto> {
     entity.created_at = new Date(dto.created_at);
     entity.updated_at = new Date(dto.updated_at);
 
-    entity.films = extractIdsFromUrls(dto.films, 'films').map((id) => {
+    entity.films = extractIdsFromUrls(dto.films ?? [], 'films').map((id) => {
       const film = new Film();
       film.id = id;
       return film;
     });
 
-    entity.pilots = extractIdsFromUrls(dto.pilots, 'people').map((id) => {
+    entity.pilots = extractIdsFromUrls(dto.pilots ?? [], 'people').map((id) => {
       const pilot = new Person();
       pilot.id = id;
       return pilot;

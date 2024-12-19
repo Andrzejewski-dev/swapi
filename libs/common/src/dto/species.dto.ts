@@ -27,7 +27,7 @@ export class SpeciesDto extends ResourceDto {
   eye_colors: string;
 
   @ApiProperty({ example: 'http://localhost/api/planets/1' })
-  homeworld: string;
+  homeworld: string | null;
 
   @ApiProperty({ example: 'Galactic Basic' })
   language: string;

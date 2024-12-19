@@ -1,6 +1,6 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
@@ -14,7 +14,7 @@ import { Person } from './person.entity';
 @Entity('planets')
 @Index('IDX_planets_name', ['name'])
 export class Planet {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255 })

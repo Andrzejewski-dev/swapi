@@ -1,12 +1,12 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
   ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
   Column,
   Index,
   JoinTable,
+  PrimaryColumn,
 } from 'typeorm';
 import { Film } from './film.entity';
 import { Person } from './person.entity';
@@ -15,7 +15,7 @@ import { Person } from './person.entity';
 @Index('IDX_starships_name', ['name'])
 @Index('IDX_starships_model', ['model'])
 export class Starship {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255 })

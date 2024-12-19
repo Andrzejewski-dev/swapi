@@ -1,9 +1,9 @@
 import { Repository } from 'typeorm';
 import { Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { extractIdFromUrl, SpeciesDto } from '@swapi/common';
+import { extractIdFromUrl, extractIdsFromUrls, SpeciesDto } from '@swapi/common';
 
-import { Species, Planet } from '../entities';
+import { Species, Planet, Person } from '../entities';
 import { ResourcesService } from './resources.service';
 import { DatabaseOptionsInterface } from '../database-options.interface';
 import { DATABASE_OPTIONS_PROVIDER } from '../database.constants';
@@ -36,8 +36,8 @@ export class SpeciesService extends ResourcesService<Species, SpeciesDto> {
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
     dto.url = `${this.options.appBaseUrl}/api/species/${entity.id}`;
-
     dto.people = entity.people.map((person) => `${person.id}`);
+
     return dto;
   }
 
@@ -53,9 +53,18 @@ export class SpeciesService extends ResourcesService<Species, SpeciesDto> {
     entity.skin_colors = dto.skin_colors;
     entity.eye_colors = dto.eye_colors;
     entity.language = dto.language;
-    const homeworld = new Planet();
-    homeworld.id = extractIdFromUrl(dto.homeworld, 'planets');
-    entity.homeworld = homeworld;
+    if (dto.homeworld) {
+      const homeworld = new Planet();
+      homeworld.id = extractIdFromUrl(dto.homeworld, 'planets');
+      entity.homeworld = homeworld;
+    }
+    if (dto.people?.length) {
+      entity.people = extractIdsFromUrls(dto.people, 'people').map((id) => {
+        const pilot = new Person();
+        pilot.id = id;
+        return pilot;
+      });
+    }
     entity.created_at = new Date(dto.created_at);
     entity.updated_at = new Date(dto.updated_at);
 

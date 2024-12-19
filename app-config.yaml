@@ -30,4 +30,13 @@ database:
   database: <%= process.env.DATABASE_DATABASE %>
 
 swapi:
-  baseUrl: https://swapi.dev/api
+  baseUrl: https://swapi.py4e.com/api
+
+bullmq:
+  connection:
+    host: <%= process.env.REDIS_HOST %>
+    port: <%= process.env.REDIS_PORT %>
+
+importer:
+  enabled: true
+  cron: "0 0 3 * * *"

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { FilmDto, replaceUrlBase } from '@swapi/common';
+import { extractIdFromUrl, FilmDto, replaceUrlBase } from '@swapi/common';
 import { ResourcesService } from './resources.service';
 
 @Injectable()
@@ -21,10 +21,13 @@ export class FilmsService extends ResourcesService<FilmDto> {
       vehicles: resource.vehicles.map((vehicle) =>
         replaceUrlBase(this.options.appBaseUrl, vehicle),
       ),
-      species: resource.characters.map((species) =>
+      species: resource.species.map((species) =>
         replaceUrlBase(this.options.appBaseUrl, species),
       ),
+      id: extractIdFromUrl(resource.url, 'films'),
       url: replaceUrlBase(this.options.appBaseUrl, resource.url),
+      created_at: new Date(resource.created),
+      updated_at: new Date(resource.edited),
     } as FilmDto;
   }
 }

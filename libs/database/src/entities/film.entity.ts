@@ -1,7 +1,7 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   ManyToMany,
   JoinTable,
   CreateDateColumn,
@@ -17,7 +17,7 @@ import { Vehicle } from './vehicle.entity';
 @Entity('films')
 @Index('IDX_films_title', ['title'])
 export class Film {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255 })
@@ -38,7 +38,7 @@ export class Film {
   @Column({ type: 'date' })
   release_date: string;
 
-  @ManyToMany(() => Person, (character) => character.films, { cascade: true })
+  @ManyToMany(() => Person, (character) => character.films)
   @JoinTable({
     name: 'films_characters',
     joinColumn: { name: 'film_id', referencedColumnName: 'id' },
@@ -46,7 +46,7 @@ export class Film {
   })
   characters: Person[];
 
-  @ManyToMany(() => Planet, (planet) => planet.films, { cascade: true })
+  @ManyToMany(() => Planet, (planet) => planet.films)
   @JoinTable({
     name: 'films_planets',
     joinColumn: { name: 'film_id', referencedColumnName: 'id' },
@@ -54,7 +54,7 @@ export class Film {
   })
   planets: Planet[];
 
-  @ManyToMany(() => Starship, (starship) => starship.films, { cascade: true })
+  @ManyToMany(() => Starship, (starship) => starship.films)
   @JoinTable({
     name: 'films_starships',
     joinColumn: { name: 'film_id', referencedColumnName: 'id' },
@@ -62,7 +62,7 @@ export class Film {
   })
   starships: Starship[];
 
-  @ManyToMany(() => Vehicle, (vehicle) => vehicle.films, { cascade: true })
+  @ManyToMany(() => Vehicle, (vehicle) => vehicle.films)
   @JoinTable({
     name: 'films_vehicles',
     joinColumn: { name: 'film_id', referencedColumnName: 'id' },
@@ -70,7 +70,7 @@ export class Film {
   })
   vehicles: Vehicle[];
 
-  @ManyToMany(() => Species, (species) => species.films, { cascade: true })
+  @ManyToMany(() => Species, (species) => species.films)
   @JoinTable({
     name: 'films_species',
     joinColumn: { name: 'film_id', referencedColumnName: 'id' },
