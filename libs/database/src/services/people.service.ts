@@ -9,13 +9,15 @@ import { DatabaseOptionsInterface } from '../database-options.interface';
 import { DATABASE_OPTIONS_PROVIDER } from '../database.constants';
 
 export class PeopleService extends ResourcesService<Person, PersonDto> {
+  protected defaultRelations = ['homeworld'];
+
   constructor(
     @InjectRepository(Person)
     protected repository: Repository<Person>,
     @Inject(DATABASE_OPTIONS_PROVIDER)
     private options: DatabaseOptionsInterface,
   ) {
-    super(repository);
+    super(repository, `${options.appBaseUrl}/api/people`);
   }
 
   parseEntityToDto(entity: Person): PersonDto {

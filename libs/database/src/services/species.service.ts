@@ -1,7 +1,11 @@
 import { Repository } from 'typeorm';
 import { Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { extractIdFromUrl, extractIdsFromUrls, SpeciesDto } from '@swapi/common';
+import {
+  extractIdFromUrl,
+  extractIdsFromUrls,
+  SpeciesDto,
+} from '@swapi/common';
 
 import { Species, Planet, Person } from '../entities';
 import { ResourcesService } from './resources.service';
@@ -9,13 +13,15 @@ import { DatabaseOptionsInterface } from '../database-options.interface';
 import { DATABASE_OPTIONS_PROVIDER } from '../database.constants';
 
 export class SpeciesService extends ResourcesService<Species, SpeciesDto> {
+  protected defaultRelations = ['homeworld', 'people'];
+
   constructor(
     @InjectRepository(Species)
     protected repository: Repository<Species>,
     @Inject(DATABASE_OPTIONS_PROVIDER)
     private options: DatabaseOptionsInterface,
   ) {
-    super(repository);
+    super(repository, `${options.appBaseUrl}/api/species`);
   }
 
   parseEntityToDto(entity: Species): SpeciesDto {
@@ -36,7 +42,9 @@ export class SpeciesService extends ResourcesService<Species, SpeciesDto> {
     dto.created_at = +entity.created_at;
     dto.updated_at = +entity.updated_at;
     dto.url = `${this.options.appBaseUrl}/api/species/${entity.id}`;
-    dto.people = entity.people.map((person) => `${person.id}`);
+    dto.people = entity.people.map(
+      (person) => `${this.options.appBaseUrl}/api/people/${person.id}`,
+    );
 
     return dto;
   }

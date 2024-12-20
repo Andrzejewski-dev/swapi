@@ -9,13 +9,15 @@ import { DatabaseOptionsInterface } from '../database-options.interface';
 import { DATABASE_OPTIONS_PROVIDER } from '../database.constants';
 
 export class VehiclesService extends ResourcesService<Vehicle, VehicleDto> {
+  protected defaultRelations = ['films', 'pilots'];
+
   constructor(
     @InjectRepository(Vehicle)
     protected repository: Repository<Vehicle>,
     @Inject(DATABASE_OPTIONS_PROVIDER)
     private options: DatabaseOptionsInterface,
   ) {
-    super(repository);
+    super(repository, `${options.appBaseUrl}/api/vehicles`);
   }
 
   parseEntityToDto(entity: Vehicle): VehicleDto {

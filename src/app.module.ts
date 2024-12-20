@@ -10,6 +10,12 @@ import { ImporterModule } from '@swapi/importer';
 
 import { config } from './config';
 import { datasource } from './datasource';
+import { FilmsModule } from './films';
+import { PeopleModule } from './people';
+import { PlanetsModule } from './planets';
+import { SpeciesModule } from './species';
+import { StarshipsModule } from './starships';
+import { VehiclesModule } from './vehicles';
 
 @Module({})
 export class AppModule {
@@ -52,6 +58,12 @@ export class AppModule {
           enabled: options.importer.enabled,
           cron: options.importer.cron,
         }),
+        FilmsModule,
+        PeopleModule,
+        PlanetsModule,
+        SpeciesModule,
+        StarshipsModule,
+        VehiclesModule,
       ],
       controllers: [],
       providers: [],

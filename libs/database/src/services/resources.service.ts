@@ -1,5 +1,5 @@
-import { FindOptionsWhere, Repository } from 'typeorm';
-import { ResourceDto } from '@swapi/common';
+import { FindOptionsOrder, FindOptionsWhere, Repository } from 'typeorm';
+import { PaginatedDto, ResourceDto } from '@swapi/common';
 
 import { Entity as EntityType } from '../types';
 
@@ -7,18 +7,39 @@ export abstract class ResourcesService<
   Entity extends EntityType,
   DTO extends ResourceDto,
 > {
-  constructor(protected repository: Repository<Entity>) {}
+  protected defaultRelations = [];
 
-  async findAll(): Promise<DTO[]> {
-    const entities = await this.repository.find();
+  constructor(
+    protected repository: Repository<Entity>,
+    protected listUrl: string,
+  ) {}
 
-    return entities.map((entity) => this.parseEntityToDto(entity));
+  async findAll(page?: number): Promise<PaginatedDto<DTO>> {
+    const [results, count] = await this.repository.findAndCount({
+      skip: (page - 1) * 10,
+      take: 10,
+      relations: this.defaultRelations,
+      relationLoadStrategy: 'query',
+      order: {
+        id: 'ASC',
+      } as FindOptionsOrder<Entity>,
+    });
+    const nextPage = page * 10 < count ? page + 1 : null;
+    const previousPage = page > 1 ? page - 1 : null;
+
+    return {
+      count,
+      next: nextPage ? `${this.listUrl}?page=${nextPage}` : null,
+      previous: previousPage ? `${this.listUrl}?page=${previousPage}` : null,
+      results: results.map((entity) => this.parseEntityToDto(entity)),
+    };
   }
 
   async findOne(id: number): Promise<DTO | null> {
-    const entity = await this.repository.findOneBy({
-      id,
-    } as FindOptionsWhere<Entity>);
+    const entity = await this.repository.findOne({
+      where: { id } as FindOptionsWhere<Entity>,
+      relations: this.defaultRelations,
+    });
 
     return entity ? this.parseEntityToDto(entity) : null;
   }

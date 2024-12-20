@@ -15,7 +15,7 @@ export class PlanetsService extends ResourcesService<Planet, PlanetDto> {
     @Inject(DATABASE_OPTIONS_PROVIDER)
     private options: DatabaseOptionsInterface,
   ) {
-    super(repository);
+    super(repository, `${options.appBaseUrl}/api/planets`);
   }
 
   parseEntityToDto(entity: Planet): PlanetDto {
