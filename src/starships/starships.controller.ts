@@ -35,7 +35,7 @@ export class StarshipsController {
   async findAll(
     @Query('page') page: number = 1,
   ): Promise<PaginatedDto<StarshipDto>> {
-    return this.starshipsDbService.findAll(page);
+    return this.starshipsDbService.findAll(+page);
   }
 
   @Get(':id')
@@ -52,8 +52,8 @@ export class StarshipsController {
   @ApiResponse({ status: 404, description: 'Starship not found.' })
   async findOne(@Param('id') id: number): Promise<StarshipDto> {
     const starship =
-      (await this.starshipsDbService.findOne(id)) ??
-      (await this.starshipsApiService.findOne(id));
+      (await this.starshipsDbService.findOne(+id)) ??
+      (await this.starshipsApiService.findOne(+id));
     if (!starship) {
       throw new HttpException(
         `Starship with ID ${id} not found`,

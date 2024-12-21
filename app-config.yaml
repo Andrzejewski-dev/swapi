@@ -40,3 +40,7 @@ bullmq:
 importer:
   enabled: true
   cron: "0 0 3 * * *"
+
+counter:
+  enabled: true
+  cron: "0 0 4 * * *"

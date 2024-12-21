@@ -35,7 +35,7 @@ export class PeopleController {
   async findAll(
     @Query('page') page: number = 1,
   ): Promise<PaginatedDto<PersonDto>> {
-    return this.peopleDbService.findAll(page);
+    return this.peopleDbService.findAll(+page);
   }
 
   @Get(':id')
@@ -52,8 +52,8 @@ export class PeopleController {
   @ApiResponse({ status: 404, description: 'Person not found.' })
   async findOne(@Param('id') id: number): Promise<PersonDto> {
     const person =
-      (await this.peopleDbService.findOne(id)) ??
-      (await this.peopleApiService.findOne(id));
+      (await this.peopleDbService.findOne(+id)) ??
+      (await this.peopleApiService.findOne(+id));
     if (!person) {
       throw new HttpException(
         `Person with ID ${id} not found`,

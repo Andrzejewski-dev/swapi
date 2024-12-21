@@ -59,6 +59,12 @@
       ],
       "@swapi/importer/*": [
         "libs/importer/src/*"
+      ],
+      "@swapi/counter": [
+        "libs/counter/src"
+      ],
+      "@swapi/counter/*": [
+        "libs/counter/src/*"
       ]
     }
   }

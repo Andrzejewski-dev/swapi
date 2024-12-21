@@ -69,6 +69,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/importer/tsconfig.lib.json"
       }
+    },
+    "counter": {
+      "type": "library",
+      "root": "libs/counter",
+      "entryFile": "index",
+      "sourceRoot": "libs/counter/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/counter/tsconfig.lib.json"
+      }
     }
   }
 }

@@ -11,6 +11,7 @@ import {
   SpeciesService,
   StarshipsService,
   VehiclesService,
+  WordsService,
 } from './services';
 import * as entities from './entities';
 import * as migrations from './migrations';
@@ -25,6 +26,7 @@ import * as migrations from './migrations';
       entities.Species,
       entities.Starship,
       entities.Vehicle,
+      entities.Word,
     ]),
   ],
   providers: [
@@ -34,6 +36,7 @@ import * as migrations from './migrations';
     SpeciesService,
     StarshipsService,
     VehiclesService,
+    WordsService,
   ],
   exports: [
     FilmsService,
@@ -42,6 +45,7 @@ import * as migrations from './migrations';
     SpeciesService,
     StarshipsService,
     VehiclesService,
+    WordsService,
   ],
 })
 export class DatabaseModule {

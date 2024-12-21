@@ -2,6 +2,7 @@ import { DynamicModule, Module } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { BullModule } from '@nestjs/bullmq';
 import { CorsModule } from '@swapi/cors';
+import { CounterModule } from '@swapi/counter';
 import { DatabaseModule } from '@swapi/database';
 import { HttpServerModule } from '@swapi/http-server';
 import { SwaggerModule } from '@swapi/swagger';
@@ -16,6 +17,7 @@ import { PlanetsModule } from './planets';
 import { SpeciesModule } from './species';
 import { StarshipsModule } from './starships';
 import { VehiclesModule } from './vehicles';
+import { WordsModule } from './words';
 
 @Module({})
 export class AppModule {
@@ -58,12 +60,17 @@ export class AppModule {
           enabled: options.importer.enabled,
           cron: options.importer.cron,
         }),
+        CounterModule.forRoot({
+          enabled: options.counter.enabled,
+          cron: options.counter.cron,
+        }),
         FilmsModule,
         PeopleModule,
         PlanetsModule,
         SpeciesModule,
         StarshipsModule,
         VehiclesModule,
+        WordsModule,
       ],
       controllers: [],
       providers: [],

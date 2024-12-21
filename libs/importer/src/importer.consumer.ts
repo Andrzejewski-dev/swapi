@@ -81,6 +81,7 @@ export class ImporterConsumer extends WorkerHost {
       this.logger.log('Resources imported successfully.');
     } catch (error) {
       this.logger.error(error);
+      throw error;
     }
   }
 

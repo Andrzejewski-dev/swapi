@@ -8,6 +8,9 @@ export abstract class ResourcesService<
   DTO extends ResourceDto,
 > {
   protected defaultRelations = [];
+  protected defaultOrder: FindOptionsOrder<Entity> = {
+    id: 'ASC',
+  } as FindOptionsOrder<Entity>;
 
   constructor(
     protected repository: Repository<Entity>,
@@ -20,9 +23,7 @@ export abstract class ResourcesService<
       take: 10,
       relations: this.defaultRelations,
       relationLoadStrategy: 'query',
-      order: {
-        id: 'ASC',
-      } as FindOptionsOrder<Entity>,
+      order: this.defaultOrder,
     });
     const nextPage = page * 10 < count ? page + 1 : null;
     const previousPage = page > 1 ? page - 1 : null;

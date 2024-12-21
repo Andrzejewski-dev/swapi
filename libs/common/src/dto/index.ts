@@ -6,3 +6,4 @@ export * from './species.dto';
 export * from './startship.dto';
 export * from './vehicle.dto';
 export * from './paginated.dto';
+export * from './word.dto';

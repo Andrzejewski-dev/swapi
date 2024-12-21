@@ -35,7 +35,7 @@ export class VehiclesController {
   async findAll(
     @Query('page') page: number = 1,
   ): Promise<PaginatedDto<VehicleDto>> {
-    return this.vehiclesDbService.findAll(page);
+    return this.vehiclesDbService.findAll(+page);
   }
 
   @Get(':id')
@@ -52,8 +52,8 @@ export class VehiclesController {
   @ApiResponse({ status: 404, description: 'Vehicle not found.' })
   async findOne(@Param('id') id: number): Promise<VehicleDto> {
     const vehicle =
-      (await this.vehiclesDbService.findOne(id)) ??
-      (await this.vehiclesApiService.findOne(id));
+      (await this.vehiclesDbService.findOne(+id)) ??
+      (await this.vehiclesApiService.findOne(+id));
     if (!vehicle) {
       throw new HttpException(
         `Vehicle with ID ${id} not found`,

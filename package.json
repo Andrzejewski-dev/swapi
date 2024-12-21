@@ -98,7 +98,8 @@
       "^@swapi/common(|/.*)$": "<rootDir>/libs/common/src/$1",
       "^@swapi/database(|/.*)$": "<rootDir>/libs/database/src/$1",
       "^@swapi/swapi(|/.*)$": "<rootDir>/libs/swapi/src/$1",
-      "^@swapi/importer(|/.*)$": "<rootDir>/libs/importer/src/$1"
+      "^@swapi/importer(|/.*)$": "<rootDir>/libs/importer/src/$1",
+      "^@swapi/counter(|/.*)$": "<rootDir>/libs/counter/src/$1"
     }
   }
 }

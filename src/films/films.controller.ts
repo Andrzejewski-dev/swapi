@@ -35,7 +35,7 @@ export class FilmsController {
   async findAll(
     @Query('page') page: number = 1,
   ): Promise<PaginatedDto<FilmDto>> {
-    return this.filmsDbService.findAll(page);
+    return this.filmsDbService.findAll(+page);
   }
 
   @Get(':id')
@@ -52,8 +52,8 @@ export class FilmsController {
   @ApiResponse({ status: 404, description: 'Film not found.' })
   async findOne(@Param('id') id: number): Promise<FilmDto> {
     const film =
-      (await this.filmsDbService.findOne(id)) ??
-      (await this.filmsApiService.findOne(id));
+      (await this.filmsDbService.findOne(+id)) ??
+      (await this.filmsApiService.findOne(+id));
     if (!film) {
       throw new HttpException(
         `Film with ID ${id} not found`,

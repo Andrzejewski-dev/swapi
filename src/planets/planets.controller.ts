@@ -35,7 +35,7 @@ export class PlanetsController {
   async findAll(
     @Query('page') page: number = 1,
   ): Promise<PaginatedDto<PlanetDto>> {
-    return this.planetsDbService.findAll(page);
+    return this.planetsDbService.findAll(+page);
   }
 
   @Get(':id')
@@ -52,8 +52,8 @@ export class PlanetsController {
   @ApiResponse({ status: 404, description: 'Planet not found.' })
   async findOne(@Param('id') id: number): Promise<PlanetDto> {
     const planet =
-      (await this.planetsDbService.findOne(id)) ??
-      (await this.planetsApiService.findOne(id));
+      (await this.planetsDbService.findOne(+id)) ??
+      (await this.planetsApiService.findOne(+id));
     if (!planet) {
       throw new HttpException(
         `Planet with ID ${id} not found`,

@@ -35,7 +35,7 @@ export class SpeciesController {
   async findAll(
     @Query('page') page: number = 1,
   ): Promise<PaginatedDto<SpeciesDto>> {
-    return this.speciesDbService.findAll(page);
+    return this.speciesDbService.findAll(+page);
   }
 
   @Get(':id')
@@ -52,8 +52,8 @@ export class SpeciesController {
   @ApiResponse({ status: 404, description: 'Species not found.' })
   async findOne(@Param('id') id: number): Promise<SpeciesDto> {
     const species =
-      (await this.speciesDbService.findOne(id)) ??
-      (await this.speciesApiService.findOne(id));
+      (await this.speciesDbService.findOne(+id)) ??
+      (await this.speciesApiService.findOne(+id));
     if (!species) {
       throw new HttpException(
         `Species with ID ${id} not found`,

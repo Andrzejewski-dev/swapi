@@ -11,14 +11,12 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
-    "swapi/http-server/(.*)": "<rootDir>/../libs/http-server/src/$1",
-    "swapi/http-server": "<rootDir>/../libs/http-server/src",
-    "swapi/swagger/(.*)": "<rootDir>/../libs/swagger/src/$1",
-    "swapi/swagger": "<rootDir>/../libs/swagger/src",
+    "@swapi/http-server/(.*)": "<rootDir>/../libs/http-server/src/$1",
+    "@swapi/http-server": "<rootDir>/../libs/http-server/src",
+    "@swapi/swagger/(.*)": "<rootDir>/../libs/swagger/src/$1",
+    "@swapi/swagger": "<rootDir>/../libs/swagger/src",
     "@swapi/cors/(.*)": "<rootDir>/../libs/cors/src/$1",
     "@swapi/cors": "<rootDir>/../libs/cors/src",
-    "@swapi/logger/(.*)": "<rootDir>/../libs/logger/src/$1",
-    "@swapi/logger": "<rootDir>/../libs/logger/src",
     "@swapi/common/(.*)": "<rootDir>/../libs/common/src/$1",
     "@swapi/common": "<rootDir>/../libs/common/src",
     "@swapi/database/(.*)": "<rootDir>/../libs/database/src/$1",
@@ -26,6 +24,8 @@
     "@swapi/swapi/(.*)": "<rootDir>/../libs/swapi/src/$1",
     "@swapi/swapi": "<rootDir>/../libs/swapi/src",
     "@swapi/importer/(.*)": "<rootDir>/../libs/importer/src/$1",
-    "@swapi/importer": "<rootDir>/../libs/importer/src"
+    "@swapi/importer": "<rootDir>/../libs/importer/src",
+    "@swapi/counter/(.*)": "<rootDir>/../libs/counter/src/$1",
+    "@swapi/counter": "<rootDir>/../libs/counter/src"
   }
 }

@@ -4,3 +4,4 @@ export * from './species.entity';
 export * from './starship.entity';
 export * from './film.entity';
 export * from './vehicle.entity';
+export * from './word.entity';
